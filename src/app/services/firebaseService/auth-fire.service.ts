@@ -18,7 +18,8 @@ export class AuthFireService {
       return await this.afAuth.signInWithEmailAndPassword(email, password);
     } catch (error) {
       console.log("Error on login", error);
-      return 'ErrorLogin';
+      throw new Error('Error on login');
+      
     }
   }
 

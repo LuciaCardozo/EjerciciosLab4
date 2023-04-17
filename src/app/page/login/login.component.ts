@@ -22,18 +22,18 @@ export class LoginComponent implements OnInit {
     if (this.user.email != '' || this.user.password != '') {
       try{
           this.database.onLogin(this.user.email, this.user.password).then((res)=>{
-            if(res != "ErrorLogin") {
+            if(res) {
               this.database.emailUsuarioLogeado = this.user.email;   
               console.log(res)
-              this.route.navigate(['/bienvenido']);
-              this.toastService.show("Successfully user", {classname:'bg-success', "delay":"2000"});
+              this.route.navigate(['/home']);
+              this.toastService.show("Successfully user.", {classname:'bg-success', "delay":"2000"});
             }
-        }).catch((err)=>{console.log("error")});
+        }).catch((err)=>{ this.toastService.show("The user or password is incorrect.", {classname:'bg-danger', "delay":"2000"}); });
       }catch(error){
-        this.toastService.show("Error login", {classname:'bg-warning', "delay":"2000"});
+        this.toastService.show("Error login.", {classname:'bg-warning', "delay":"2000"});
       }
     }else{
-      this.toastService.show("Por favor complete todos los campos", {classname:'bg-warning', "delay":"2000"});
+      this.toastService.show("Please complete all fields.", {classname:'bg-warning', "delay":"2000"});
     }
   }
   
