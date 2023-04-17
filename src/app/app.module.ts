@@ -6,17 +6,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './page/login/login.component';
 import { ErrorComponent } from './page/error/error.component';
 import { BienvenidoComponent } from './page/bienvenido/bienvenido.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment.prod';
+import { FormsModule } from '@angular/forms';
+import { ToastComponent } from './shared/toast/toast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ErrorComponent,
-    BienvenidoComponent
+    BienvenidoComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]

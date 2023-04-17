@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "scenic-setup-298622": {
+      "hosting": {
+        "ejercicioDos": [
+          "scenic-setup-298622"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "scenic-setup-298622"
+  }
+}

@@ -1,1 +1,32 @@
-<p>login works!</p>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <!-- <a class="customA" style="margin: 1rem; cursor: pointer;"> Sign In </a>
+      <a class="customA" style="margin: 1rem; cursor: pointer;">Sign Up </a>
+   -->
+      <!-- Icon -->
+      <div class="fadeIn first" style="margin: 1rem;">
+        <img src="../../../assets/bulbasaur.png" id="icon" alt="User Icon" />
+      </div>
+  
+      <!-- Login Form -->
+      <form>
+        <input style="margin-top: 1rem;" type="text" id="login" class="fadeIn second" name="loginEmail" placeholder="login" [(ngModel)] = 'user.email'>
+        <input style="margin-top: 1rem;" type="password" id="password" class="fadeIn third" name="loginPassword" placeholder="password" [(ngModel)] = 'user.password'>
+        <input style="margin-top: 1rem;" type="submit" class="fadeIn fourth" value="Log In" (click)='loginWithValidation()'>
+      </form>
+      <div style="display: flex; justify-content: space-evenly; margin: 1rem;">
+        <a (click)="userAutocomplete('thiago@gmail.com','123456')" class="customALogin" style="border-radius: 50%; width: 10%; display: flex; justify-content: center; align-items: center; background-color: transparent;">
+          <img style="cursor: pointer" src="../../../assets/pokebola1.png" alt="" width="100%">
+        </a>
+        <a class="customALogin" style="border-radius: 50%; width: 10%; display: flex; justify-content: center; align-items: center; background-color: transparent;">
+          <img style="cursor: pointer" src="../../../assets/pokebola2.png" alt="" width="100%">
+        </a>
+      </div>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover">Forgot Password?</a>
+      </div>
+  
+    </div>
+  </div>

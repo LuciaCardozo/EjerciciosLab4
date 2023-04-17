@@ -98,6 +98,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "ejercicioDos:build:production",
+            "firebaseProject": "scenic-setup-298622",
+            "firebaseHostingSite": "scenic-setup-298622"
+          }
         }
       }
     }
