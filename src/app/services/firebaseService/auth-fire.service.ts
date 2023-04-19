@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
 
 @Injectable({
@@ -8,7 +9,7 @@ import firebase from 'firebase/compat/app';
 export class AuthFireService {
   public emailUsuarioLogeado: any;
   public isLogged: any = false;
-  constructor(private afAuth: AngularFireAuth) { 
+  constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth) { 
     afAuth.authState.subscribe(user => this.isLogged = user);//en el caso de no estar logueado devuelve un null
   }
 
@@ -29,6 +30,16 @@ export class AuthFireService {
     } catch (error) {
       console.log("Error on login", error);
       return error;
+    }
+  }
+
+  async traerTodo(coleccion: any) {
+    try {
+      return await this.firestore.collection(coleccion).snapshotChanges();
+    }
+    catch (error) {
+      alert(error);
+      return null;
     }
   }
 }

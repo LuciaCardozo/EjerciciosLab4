@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthFireService } from 'src/app/services/firebaseService/auth-fire.service';
 
 @Component({
   selector: 'app-bienvenido',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BienvenidoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authFirebase:AuthFireService) { }
 
   ngOnInit(): void {
   }

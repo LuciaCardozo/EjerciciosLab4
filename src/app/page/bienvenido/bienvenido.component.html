@@ -1,4 +1,4 @@
-<h1 style="text-align: center; margin-top: 5%; font-family: cursive;">Welcome</h1>
+<h1 style="text-align: center; margin-top: 5%; font-family: cursive;">Welcome {{authFirebase.emailUsuarioLogeado.split('@')[0] | titlecase }}</h1>
 <div style="display: flex; justify-content: center; margin-top: 5%;">
     <button routerLink="/login" style="border: none; padding: 5px 10px; border-radius: 10px; color: white;
     font-family: cursive; background-color: rgba(175, 125, 221, 0.637);">Sign Out</button>

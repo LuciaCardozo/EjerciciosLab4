@@ -9,17 +9,23 @@ import { ToastService } from 'src/app/services/toast/toast.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  listaDeCorreos: any = [];
   user = {
     email: '',
     password: '',
   };
   constructor(private database: AuthFireService, private route: Router, private toastService:ToastService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    const res = await this.database.traerTodo('users');
+    res?.subscribe((listaref: any) => {
+      this.listaDeCorreos = listaref.map((userRef: any) => userRef.payload.doc.data());
+    });
   }
 
   loginWithValidation() {
-    if (this.user.email != '' || this.user.password != '') {
+    let existe = this.listaDeCorreos.find((email: any) => email.email == this.user.email && email.password == this.user.password);
+    if (existe) {
       try{
           this.database.onLogin(this.user.email, this.user.password).then((res)=>{
             if(res) {
@@ -28,12 +34,14 @@ export class LoginComponent implements OnInit {
               this.route.navigate(['/home']);
               this.toastService.show("Successfully user.", {classname:'bg-success', "delay":"2000"});
             }
-        }).catch((err)=>{ this.toastService.show("The user or password is incorrect.", {classname:'bg-danger', "delay":"2000"}); });
+        });
       }catch(error){
         this.toastService.show("Error login.", {classname:'bg-warning', "delay":"2000"});
       }
-    }else{
+    }else if(this.user.email == '' || this.user.password==''){
       this.toastService.show("Please complete all fields.", {classname:'bg-warning', "delay":"2000"});
+    }else{
+      this.toastService.show("The user or password is incorrect.", {classname:'bg-danger', "delay":"2000"});
     }
   }
   
